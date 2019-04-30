@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  
+
 
   <!-- début WOWSlider section -->
   <div id="wowslider-container1">
@@ -102,10 +102,43 @@
   <!-- fin carousel 3D -->
 
 
-
   <!-- début parallax -->
   <div class="parallax-window" data-parallax="scroll" data-image-src="img/parallax/01.jpg" alt=""></div>
   <!-- fin parallax -->
+
+
+  <!--- début section à propos --->
+  <div class="a_propos">
+    <div class="image-a_propos">
+      <img src="img/a_propos.jpg" alt="AllocineMET">
+    </div>
+    <div class="text-a_propos">
+      <h2 class=" container-fluid mx-auto">Lorem Ipsum</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga error reiciendis repellat, aut quos
+        culpa
+        distinctio tempora a laudantium voluptatem eligendi possimus nesciunt quas maiores, asperiores
+        beatae
+        esse? Nulla, totam.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nesciunt sapiente. Magnam dicta
+        eligendi
+        repellendus repellat dolore saepe rem totam. Possimus quam illo aliquam repudiandae ipsam nam ad, et
+        quis?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nesciunt sapiente. Magnam dicta
+        eligendi
+        repellendus repellat dolore saepe rem totam. Possimus quam illo aliquam repudiandae ipsam nam ad, et
+        quis?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nesciunt sapiente. Magnam dicta
+        eligendi
+        repellendus repellat dolore saepe rem totam. Possimus quam illo aliquam repudiandae ipsam nam ad, et
+        quis?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita minus nisi sed cum, molestiae
+        voluptates est voluptatibus architecto iusto molestias esse sapiente hic nulla quasi vel aperiam a
+        ex tempora!</p>
+
+    </div>
+  </div>
+
+
 
 
 
