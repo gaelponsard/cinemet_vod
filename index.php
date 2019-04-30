@@ -107,7 +107,7 @@
   <!-- fin parallax -->
 
 
-  <!--- début section à propos --->
+  <!--- début section à propos -->
   <div class="a_propos">
     <div class="image-a_propos">
       <img src="img/a_propos.jpg" alt="AllocineMET">
@@ -137,6 +137,7 @@
 
     </div>
   </div>
+  <!-- fin section à propos -->
 
 
 

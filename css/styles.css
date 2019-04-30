@@ -19,7 +19,7 @@ bottom: 0px;
 /********* STYLES DU PARALAX **********/
 
 .parallax-window {
-    min-height: 50vh;
+    min-height: 50%;
     background: transparent;
 }
 
@@ -28,22 +28,25 @@ bottom: 0px;
 
 .a_propos{
     width: 100%;
-    height: auto;
-    margin-top:30px;
-    margin-bottom: 30px;
-    margin-left:20px;
-    margin-right:20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
 
     
 }
 
 .image-a_propos{
-    flex:1;
-    margin:20px;
+    
 }
 
+.image-a_propos img{
+    flex:1;
+    width:90%;
+    height:auto;
+    margin:2em;
+}
 .text-a_propos{
     flex:2;
-    margin:20px;    
+    margin:2em;    
 }
