@@ -8,10 +8,10 @@
   <!--------------- BOOTSTRAP ------------------->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+
   <!--------------- WOWSLIDER ------------------>
   <script type="text/javascript" src="slider_home/engine1/jquery.js"></script>
-  
+
   <!------------- CSS STYLES -------------->
   <link rel="stylesheet" href="slider_home/engine1/style.css">
   <link rel="stylesheet" href="css/carousel.css">
@@ -103,7 +103,7 @@
 
     <div id="carousel">
 
-       <div class="hideLeft">
+      <div class="hideLeft">
         <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg">
       </div>
 
@@ -140,12 +140,13 @@
 
   </main>
 
-
-
   <!-- fin carousel 3D -->
 
 
 
+  <!-- début parallax -->
+  <div class="parallax-window" data-parallax="scroll" data-image-src="img/parallax/01.jpg" alt=""></div>
+  <!-- fin parallax -->
 
 
 
@@ -170,10 +171,15 @@
 
 
 
-<!------------------------ scripts pour le carousel 3d ------------------>
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script  src="js/carousel.js"></script>
-<!----------------- fin scripts pour le carousel 3d --------------------->
+
+
+
+  <!------------------------ scripts pour le carousel 3d ------------------>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src="js/carousel.js"></script>
+
+  <!----------------- script pour le parallax --------------------->
+  <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
   <!--<script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

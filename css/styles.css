@@ -16,3 +16,9 @@ width:100%;
 bottom: 0px;
 }
 
+/********* STYLES DU PARALAX **********/
+
+.parallax-window {
+    min-height: 50vh;
+    background: transparent;
+}
