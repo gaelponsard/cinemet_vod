@@ -5,12 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--------------- BOOTSTRAP ------------------->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- Start WOWSlider.com HEAD section -->
-  <link rel="stylesheet" type="text/css" href="slider_home/engine1/style.css" />
+  
+  <!--------------- WOWSLIDER ------------------>
   <script type="text/javascript" src="slider_home/engine1/jquery.js"></script>
-  <!-- End WOWSlider.com HEAD section -->
+  
+  <!------------- CSS STYLES -------------->
+  <link rel="stylesheet" href="slider_home/engine1/style.css">
+  <link rel="stylesheet" href="css/carousel.css">
   <link rel="stylesheet" href="css/styles.css">
 
   <title>Cinemet V.O.D.</title>
@@ -95,7 +99,46 @@
   <!-- fin WOWSlider  section -->
 
   <!-- début carousel 3D -->
-  
+  <main>
+
+    <div id="carousel">
+
+       <div class="hideLeft">
+        <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg">
+      </div>
+
+      <div class="prevLeftSecond">
+        <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg">
+      </div>
+
+      <div class="prev">
+        <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg">
+      </div>
+
+      <div class="selected">
+        <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg">
+      </div>
+
+      <div class="next">
+        <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+      </div>
+
+      <div class="nextRightSecond">
+        <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg">
+      </div>
+
+      <div class="hideRight">
+        <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg">
+      </div>
+
+    </div>
+
+    <div class="buttons">
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
+    </div>
+
+  </main>
 
 
 
@@ -126,6 +169,11 @@
 
 
 
+
+<!------------------------ scripts pour le carousel 3d ------------------>
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script  src="js/carousel.js"></script>
+<!----------------- fin scripts pour le carousel 3d --------------------->
   <!--<script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
