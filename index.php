@@ -18,6 +18,22 @@
 </head>
 
 <body>
+<!--//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+<header id="haut">
+        <nav class="fixed-top" id="link_nav">
+            <a href="index.html" id="logo">ALLOCINE<strong>MET</strong></a>
+            <div id="Navbar">
+                <a class="liens" href="allo_films.php">FILMS </a>
+                <a class="liens" href="contact.html">CONTACT </a>
+                <a class="liens" href="acteur.html">ACTEURS </a>
+                <a class="liens" href="realisateur.html">REALISATEURS </a>
+            </div>
+            <div class="m-nav-toggle">
+                <span class="m-toggle-icon"></span>
+            </div>
+        </nav>
+    </header>
 
 
   <!-- début WOWSlider section -->
