@@ -143,10 +143,10 @@
         <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="liens_films fadeInUp animated">
                 <div class="titre"> Nouveautés </div><br />
-                <a href="content.php"><img class="effect " src="img/1.jpg" id="action">
+                <a href="content.php?id=15"><img class="effect " src="img/1.jpg" id="action">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/2.jpg" id="science-fiction">
+                <a href="content.php?id=16"><img class="effect " src="img/2.jpg" id="science-fiction">
                     <p>blablabla</p>
                 </a>
                 <a href="content.php"><img class="effect " src="img/3.jpg" id="horreur">

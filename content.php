@@ -35,7 +35,7 @@ catch (PDOexception $e)
 
 // on recupere une image de ma table film   
 }
-$reponse = $bdd->query('SELECT * FROM film WHERE titre="Greenbook"');
+$reponse = $bdd->query("SELECT * FROM film WHERE id =" .$_GET["id"]);
 // on affiche chaque entrée une à une
 while ($donnees = $reponse->fetch())
 {
@@ -78,18 +78,7 @@ while ($donnees = $reponse->fetch())
 
     <!-- pour la description du film -->
 
-    <p class="text-center bg-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p class="text-center bg-light"><?php echo $donnees['synopsis']; ?>
     </p>
 
     <!-- pour la partie récap d'infos et la bande annonce -->
@@ -103,32 +92,26 @@ while ($donnees = $reponse->fetch())
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Réalisateur</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-              blandit.</p>
-            <small>Donec id elit non mi porta.</small>
+            <p class="mb-1"><?php echo $donnees['realisateur']; ?></p>
           </a>
           <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Production</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-              blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
+            <p class="mb-1"><?php echo $donnees['producteur']; ?></p>
           </a>
           <a href="acteur.html" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">Acteurs</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-              blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
+            <p class="mb-1"><?php echo $donnees['acteurs']; ?></p>
           </a>
         </div>
       </div>
 
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
       <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
-        <iframe class="shadow-lg p-3 mb-5 bg-light rounded" src="" height="250px" width="450px"></iframe>
+      <?php echo $donnees['video']; ?>
       </div>
 
       <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
