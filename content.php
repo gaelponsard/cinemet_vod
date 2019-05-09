@@ -33,7 +33,7 @@ catch (PDOexception $e)
 {
         die('Erreur : ' . $e->getMessage());
 
-// on recupere une image de ma table film   
+// on recupere les infos de ma table film   
 }
 $reponse = $bdd->query("SELECT * FROM film WHERE id =" .$_GET["id"]);
 // on affiche chaque entrée une à une
