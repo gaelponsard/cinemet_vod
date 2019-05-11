@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Films</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link src="css/animate.css" rel="stylesheet">
@@ -17,23 +17,11 @@
 </head>
 
 <body>
+<?php include('php/Connect_BDD.php');
 
-    <!--//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+    //////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    <header id="haut">
-        <nav class="fixed-top" id="link_nav">
-            <a href="index.php" id="logo">ALLOCINE<strong>MET</strong></a>
-            <div id="Navbar">
-                <a class="liens" href="allo_films.php">FILMS </a>
-                <a class="liens" href="contact.html">CONTACT </a>
-                <a class="liens" href="acteur.html">ACTEURS </a>
-                <a class="liens" href="realisateur.html">REALISATEURS </a>
-            </div>
-            <div class="m-nav-toggle">
-                <span class="m-toggle-icon"></span>
-            </div>
-        </nav>
-    </header>
+    include('header.php');?>
 
     <!--//////////////////////////////  HEADER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
@@ -143,217 +131,48 @@
         <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="liens_films fadeInUp animated">
                 <div class="titre"> Nouveautés </div><br />
-                <a href="content.php?id=15"><img class="effect " src="img/1.jpg" id="action">
+                <a href="content.php?Id_Film=1"><img class="effect " src="img/1.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php?id=16"><img class="effect " src="img/2.jpg" id="science-fiction">
+                <a href="content.php?Id_Film=2"><img class="effect " src="img/2.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/3.jpg" id="horreur">
+                <a href="content.php?Id_Film=3"><img class="effect " src="img/3.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/4.jpg" id="action">
+                <a href="content.php?Id_Film=4"><img class="effect " src="img/4.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/5.jpg" id="science-fiction">
+                <a href="content.php?Id_Film=5"><img class="effect " src="img/5.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/6.jpg" id="horreur">
+                <a href="content.php?Id_Film=6"><img class="effect " src="img/6.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/7.jpg" id="action">
+                <a href="content.php?Id_Film=7"><img class="effect " src="img/7.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/8.jpg" id="science-fiction">
+                <a href="content.php?Id_Film=8"><img class="effect " src="img/8.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/9.jpg" id="horreur">
+                <a href="content.php?Id_Film=9"><img class="effect " src="img/9.jpg">
                     <p>blablabla</p>
                 </a>
-                <a href="content.php"><img class="effect " src="img/10.jpg" id="action">
+                <a href="content.php?Id_Film=10"><img class="effect " src="img/10.jpg">
                     <p>blablabla</p>
                 </a>
             </div>
         </div>
 
-        <!--//////////////////////////////  CAROUSEL SIEMA  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-
-        <div class="siema">
-            <img src="img/1.jpg">
-            <img src="img/2.jpg">
-            <img src="img/3.jpg">
-            <img src="img/4.jpg">
-            <img src="img/5.jpg">
-            <img src="img/6.jpg">
-            <img src="img/7.jpg">
-            <img src="img/8.jpg">
-            <img src="img/9.jpg">
-            <img src="img/10.jpg">
-            <img src="img/1.jpg">
-            <img src="img/2.jpg">
-            <img src="img/3.jpg">
-            <img src="img/4.jpg">
-            <img src="img/5.jpg">
-            <img src="img/6.jpg">
-        </div>
-
-        <button class="prev">
-            <p>
-                <</p> </button> <button class="next">
-                    <p>></p>
-        </button>
+        
     </div>
 
-    <!--            APPARITION IMAGE SELON SCROLL 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
-    <script>
-var derniere_position_de_scroll_connue = 0;
-function faireQuelqueChose(position_scroll) {
-  // faire quelque chose avec la position du scroll
-}
-window.addEventListener(function(e) {
-           //     TweenMax.to('.liens_films', 4, {y: -800, ease: Elastic.easeOut.config(0.5, 0.2) });
-                TweenLite.to('.liens_films', 0.8, {delay: 1, ease: Power1.easeOut, y: -800, opacity: 1 });
-            })
-        
-        </script>
-        -->
+    
 
 
     <!--//////////////////////////////  FOOTER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
-    <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">
-
-        <!-- Footer Links -->
-        <div class="container text-center text-md-left ">
-
-            <!-- Footer links -->
-            <div class="row text-center text-md-left mt-3 pb-3 mx-auto">
-
-                <!-- Grid column -->
-                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h5 class=" text-uppercase mb-4  font-weight-bold text-white"><a href="index.html"> AllocineMET</a>
-                    </h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <!-- Grid column -->
-
-                <hr class="w-100 clearfix d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-sm-3 col-md-2 col-lg-2 col-xl-2 mx-auto mt-3" id="foot">
-                    <h5 class="text-uppercase mb-4 font-weight-bold">Films à l'affiche</h5>
-                    <p>
-                        <a href="#">Film 1</a>
-                    </p>
-                    <p>
-                        <a href="#">Film 2</a>
-                    </p>
-                    <p>
-                        <a href="#">Film 3</a>
-                    </p>
-                    <p>
-                        <a href="#">Film 4</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-
-                <hr class="w-100 clearfix d-md-none" id="foot">
-
-                <!-- Grid column -->
-                <div class="col-sm-3 col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" id="foot">
-                    <h5 class="text-uppercase mb-4 font-weight-bold">Liens utiles</h5>
-                    <p>
-                        <a href="https://simplon.co/">Lorem Ipsum</a>
-                    </p>
-                    <p>
-                        <a href="https://simplon-charleville.fr/">Lorem Ipsum</a>
-                    </p>
-                    <p>
-                        <a href="#!">Lorem Ipsum</a>
-                    </p>
-                    <p>
-                        <a href="#">Lorem Ipsum</a>
-                    </p>
-                </div>
-
-                <!-- Grid column -->
-                <hr class="w-100 clearfix d-md-none" id="foot">
-
-                <!-- Grid column -->
-                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold"><a href="contact.php">Contact</a></h5>
-                    <p>
-                        AllocineMET</p>
-                    <p>
-                        www.AllocineMET.net</p>
-                    <p>
-                        TEL +33 6 52 50 05 35</p>
-                    <p>
-                        TEL +33 6 87 26 69 70</p>
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Footer links -->
-
-            <hr class="hr-footer">
-
-            <!-- Grid row -->
-            <div class="row d-flex align-items-center">
-
-                <!-- Grid column -->
-                <div class="col-md-6 col-lg-7">
-
-                    <!--Copyright-->
-                    <p class="text-center text-md-left">© 2019 Copyright: AllocineMET
-
-                    </p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-6 col-lg-5 ml-lg-0">
-
-                    <!-- Social buttons -->
-                    <div class="text-center text-md-right">
-                        <ul class="list-unstyled list-inline">
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/">
-                                    <img src="img/facebook.png" title="facebook">
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://twitter.com/">
-                                    <img src="img/twitter.png" title="twitter">
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://github.com/">
-                                    <img src="img/github.png" title="github">
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://fr.linkedin.com/">
-                                    <img src="img/linkedin.png" title="linkedin">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-
-    </footer>
+    <?php include('footer.php');?>
 
     <!--//////////////////////////////  BACK TO TOP BTN  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 

@@ -24,240 +24,120 @@
 
 <body>
   <!---------CONNECTION A LA BDD --------->
-  <?php
-try
-{
-	$bdd = new PDO('mysql:host=localhost;dbname=test_allocinemet;charset=utf8', 'gaelponsard', '301278gp');
-}
-catch (PDOexception $e)
-{
-        die('Erreur : ' . $e->getMessage());
+  <?php include('php/Connect_BDD.php');
 
-// on recupere les infos de ma table film   
-}
-$reponse = $bdd->query("SELECT * FROM film WHERE id =" .$_GET["id"]);
-// on affiche chaque entrée une à une
-while ($donnees = $reponse->fetch())
-{
-?>
 
-  <!--//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
-  <header id="haut">
-    <nav class="fixed-top" id="link_nav">
-      <a href="index.php" id="logo">ALLOCINE<strong>MET</strong></a>
-      <div id="Navbar">
-        <a class="liens" href="allo_films.php">FILMS </a>
-        <a class="liens" href="contact.html">CONTACT </a>
-        <a class="liens" href="acteur.html">ACTEURS </a>
-        <a class="liens" href="realisateur.html">REALISATEURS </a>
-      </div>
-      <div class="m-nav-toggle">
-        <span class="m-toggle-icon"></span>
-      </div>
-    </nav>
-  </header>
+  //////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  include('header.php');?>
+  
 
 
   <main id="content">
 
+    <?php
+// on recupere les infos TITRE + VIDEO + SYNOPSIS de la BDD
+include('php/RequetesContent.php');
+// on ouvre la boucle
+while ($donnees = $film->fetch())
+{
+?>
+
     <!--  pour le titre -->
 
     <div class="hoofd">
-      <h1 class="text-uppercase">Titre du film</h1>
+      <h1 class="text-uppercase"><?php echo $donnees['Titre_Film']; ?></h1>
       <div class="fleches_2">
         <img class="fleche_g animated fadeInLeft" src="img/ligne_g.png">
         <img class="fleche_d animated fadeInRight" src="img/ligne_d.png">
       </div>
     </div>
 
-    <!-- pour l'image du film -->
+    <!-- pour la video du film -->
     <div class="media shadow-lg p-3 mb-5 bg-light rounded">
-      <img src="<?php echo $donnees['image']; ?>" class="mr-3" alt="...">
+      <?php echo $donnees['Video_Film']; ?>
     </div>
 
-    <!-- pour la description du film -->
+    <!-- pour la description du film, on appelle la donnee "Synopsis" depuis la table "film"-->
 
-    <p class="text-center bg-light"><?php echo $donnees['synopsis']; ?>
+    <p class="text-center bg-light"><?php echo $donnees['Synopsis']; ?>
     </p>
 
-    <!-- pour la partie récap d'infos et la bande annonce -->
+
+
+    <!-- pour la partie récap d'infos -->
 
     <div class="row">
       <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
       <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
 
         <div class="list-group">
-          <a href="realisateur.html" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Réalisateur</h5>
-            </div>
-            <p class="mb-1"><?php echo $donnees['realisateur']; ?></p>
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Durée du film</h5>
+          </div>
+          <a class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['Duree']; ?></p>
           </a>
-          <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Production</h5>
-            </div>
-            <p class="mb-1"><?php echo $donnees['producteur']; ?></p>
+
+          <?php
+}
+$film->closeCursor(); // on ferme la boucle et termine le traitement de la requete TITRE + VIDEO + SYNOPSIS
+?>
+
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Réalisateur(s)</h5>
+          </div>
+          <!--On appelle les données "Id_Realisateur"et "Nom_Realisateur" depuis les tables "film","realiser" et "realisateur"-->
+          <?php
+include('php/RequetesContent.php');
+while ($donnees = $realisateur->fetch())
+{
+?>
+          <a href="realisateur.php?Id_Realisateur=<?php echo $donnees['Id_Realisateur']; ?>"
+            class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['Nom_Realisateur']; ?></p>
           </a>
-          <a href="acteur.html" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Acteurs</h5>
-            </div>
-            <p class="mb-1"><?php echo $donnees['acteurs']; ?></p>
+          <?php
+}
+$realisateur->closeCursor(); // termine le traitement de la requete ID_REALISATEUR + NOM_REALISATEUR
+?>
+
+
+
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Acteurs</h5>
+          </div>
+          <!--On appelle les données "Id_Acteur"et "Nom_Acteur" depuis les tables "film", "jouer" et "acteur"-->
+          <?php
+include('php/RequetesContent.php');
+while ($donnees = $acteur->fetch())
+{
+?>
+          <a href="acteur.php?Id_Acteur=<?php echo $donnees['Id_Acteur']; ?>"
+            class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['Nom_Acteur']; ?><br></p>
           </a>
+          <?php
+}
+$acteur->closeCursor(); // termine le traitement de la requete ID_ACTEUR + NOM_ACTEUR
+?>
+
         </div>
       </div>
 
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
       <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
-      <?php echo $donnees['video']; ?>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
+
       </div>
-
-      <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
-
-    </div>
 
   </main>
-  
-  <footer id="footer" class="page-footer font-small text-white mdb-color pt-4 sticky bottom">
 
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left ">
 
-      <!-- Footer links -->
-      <div class="row text-center text-md-left mt-3 pb-3 mx-auto">
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class=" text-uppercase mb-4  font-weight-bold text-white"><a href="index.html"> AllocineMET</a></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <!-- Grid column -->
-
-        <hr class="w-100 clearfix d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 text-center">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Films à l'affiche</h5>
-          <p>
-            <a href="#">Film 1</a>
-          </p>
-          <p>
-            <a href="#">Film 2</a>
-          </p>
-          <p>
-            <a href="#">Film 3</a>
-          </p>
-          <p>
-            <a href="#">Film 4</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-
-        <hr class="w-100 clearfix d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 text-center">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Liens utiles</h5>
-          <p>
-            <a href="https://simplon.co/">Lorem Ipsum</a>
-          </p>
-          <p>
-            <a href="https://simplon-charleville.fr/">Lorem Ipsum</a>
-          </p>
-          <p>
-            <a href="#!">Lorem Ipsum</a>
-          </p>
-          <p>
-            <a href="#">Lorem Ipsum</a>
-          </p>
-        </div>
-
-        <!-- Grid column -->
-        <hr class="w-100 clearfix d-md-none">
-
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold"><a href="contact.php">Contact</a></h5>
-          <p>
-            AllocineMET</p>
-          <p>
-            www.AllocineMET.net</p>
-          <p>
-            TEL +33 6 52 50 05 35</p>
-          <p>
-            TEL +33 6 87 26 69 70</p>
-        </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Footer links -->
-
-      <hr class="hr-footer">
-
-      <!-- Grid row -->
-      <div class="row d-flex align-items-center">
-
-        <!-- Grid column -->
-        <div class="col-md-7 col-lg-8">
-
-          <!--Copyright-->
-          <p class="text-center text-md-left">© 2019 Copyright: AllocineMET
-
-          </p>
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-5 col-lg-4 ml-lg-0">
-
-          <!-- Social buttons -->
-          <div class="text-center text-md-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://www.facebook.com/">
-                  <img src="img/facebook.png" title="facebook">
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://twitter.com/">
-                  <img src="img/twitter.png" title="twitter">
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://github.com/">
-                  <img src="img/github.png" title="github">
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1" href="https://fr.linkedin.com/">
-                  <img src="img/linkedin.png" title="linkedin">
-                </a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row -->
-
-    </div>
-    <!-- Footer Links -->
-
-  </footer>
 
   <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
 
-  <?php
-}
-$reponse->closeCursor(); // termine le traitement de a requete
-?>
+  <?php include('footer.php');?>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
