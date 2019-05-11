@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<?php include('php/Connect_BDD.php');
+    <?php include('php/Connect_BDD.php');
 
     //////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -43,7 +43,12 @@
 
                     <button>Rechercher</button>
 
-                    <li><a href="#" class="collapsible">Action</a>
+                    <li><a href="#" class="collapsible">Genres</a>
+                        <ul>
+                            <li><a href="#">Top 2019</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="collapsible">Realisateurs</a>
                         <ul>
                             <li><a href="#">Top 2019</a></li>
                             <li><a href="#">Meilleurs films</a></li>
@@ -51,39 +56,7 @@
                             <li><a href="#">Tous les films</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" class="collapsible">Science-fiction</a>
-                        <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="collapsible">Comédie</a>
-                        <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="collapsible">Drame</a>
-                        <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="collapsible">Animation</a>
-                        <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="collapsible">Horreur</a>
+                    <li><a href="#" class="collapsible">Acteurs</a>
                         <ul>
                             <li><a href="#">Top 2019</a></li>
                             <li><a href="#">Meilleurs films</a></li>
@@ -128,46 +101,30 @@
 
         <!--//////////////////////////////  MINIATURES FILMS DROITE  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
+
         <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="liens_films fadeInUp animated">
                 <div class="titre"> Nouveautés </div><br />
-                <a href="content.php?Id_Film=1"><img class="effect " src="img/1.jpg">
-                    <p>blablabla</p>
+                <!---- on appelle la requete IMAGE_FILM + ID_FILM ----->
+                <?php include('php/Requetesfilm.php');
+// on ouvre la boucle
+while ($donnees = $affiches->fetch())
+{
+?>
+                <a href="content.php?id=<?php echo $donnees['Id_Film'];?>"><img class="effect "
+                        src="<?php echo $donnees['Image_Film']; ?>">
+
                 </a>
-                <a href="content.php?Id_Film=2"><img class="effect " src="img/2.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=3"><img class="effect " src="img/3.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=4"><img class="effect " src="img/4.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=5"><img class="effect " src="img/5.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=6"><img class="effect " src="img/6.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=7"><img class="effect " src="img/7.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=8"><img class="effect " src="img/8.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=9"><img class="effect " src="img/9.jpg">
-                    <p>blablabla</p>
-                </a>
-                <a href="content.php?Id_Film=10"><img class="effect " src="img/10.jpg">
-                    <p>blablabla</p>
-                </a>
+                <?php   
+    }
+$affiches->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+?>
             </div>
         </div>
 
-        
     </div>
 
-    
+
 
 
     <!--//////////////////////////////  FOOTER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
