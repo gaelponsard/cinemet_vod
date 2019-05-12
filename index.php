@@ -6,35 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!--------------- WOWSLIDER ------------------>
-  <script type="text/javascript" src="slider_home/engine1/jquery.js"></script>
-
-  <!------------- CSS STYLES -------------->
+  <title>Cinemet V.O.D.</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <!--  pour la police des titres  -->
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+  <!-- pour les autres textes -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <!--mon CSS -->
+  <link rel="stylesheet" href="css/style_pages_cont_real_act.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="slider_home/engine1/style.css">
   <link rel="stylesheet" href="css/carousel.css">
-  <link rel="stylesheet" href="css/styles.css">
 
-  <title>Cinemet V.O.D.</title>
+ <!--------------- WOWSLIDER ------------------>
+<script type="text/javascript" src="slider_home/engine1/jquery.js"></script>
+
+
 </head>
 
 <body>
-<!--//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+  <?php include('php/Connect_BDD.php');
 
-<header id="haut">
-        <nav class="fixed-top" id="link_nav">
-            <a href="index.html" id="logo">ALLOCINE<strong>MET</strong></a>
-            <div id="Navbar">
-                <a class="liens" href="allo_films.php">FILMS </a>
-                <a class="liens" href="contact.html">CONTACT </a>
-                <a class="liens" href="acteur.html">ACTEURS </a>
-                <a class="liens" href="realisateur.html">REALISATEURS </a>
-            </div>
-            <div class="m-nav-toggle">
-                <span class="m-toggle-icon"></span>
-            </div>
-        </nav>
-    </header>
+//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+include('header.php');?>
 
   <!-- début WOWSlider section -->
   <div id="wowslider-container1">
@@ -158,32 +158,11 @@
 
 
 
+  
 
+    <?php include('footer.php');?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
   <!------------------------ scripts pour le carousel 3d ------------------>
@@ -192,16 +171,7 @@
 
   <!----------------- script pour le parallax --------------------->
   <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-  <!--<script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>-->
+
 </body>
 
 </html>

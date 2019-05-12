@@ -20,8 +20,8 @@
     <?php include('php/Connect_BDD.php');
 
     //////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
     include('header.php');?>
+
 
     <!--//////////////////////////////  HEADER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
@@ -43,25 +43,53 @@
 
                     <button>Rechercher</button>
 
-                    <li><a href="#" class="collapsible">Genres</a>
+                    <li><a class="collapsible">Genres</a>
+                    
+                    
                         <ul>
-                            <li><a href="#">Top 2019</a></li>
+                        <li><a href="allo_films.php">TOUS</a></li>
+                        </ul>
+                        <ul>
+                        <?php
+include('php/RequetesFilm.php');
+while ($donnees = $genres->fetch())
+{
+?>
+                            <li><a href="genre.php?Id_Genre=<?php echo $donnees['Id_Genre']; ?>"><?php echo $donnees['Type_Genre']; ?></a></li>
+                            <?php   
+    }
+$genres->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+?>
                         </ul>
                     </li>
-                    <li><a href="#" class="collapsible">Realisateurs</a>
+                    
+
+                    <li><a class="collapsible">Realisateurs</a>
                         <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
+                        <?php
+include('php/RequetesFilm.php');
+while ($donnees = $realisateurs->fetch())
+{
+?>   
+                            <li><a href="realisateur.php?Id_Realisateur=<?php echo $donnees['Id_Realisateur']; ?>"><?php echo $donnees['Nom_Realisateur']; ?></a></li>
+                            <?php   
+    }
+$realisateurs->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+?>
                         </ul>
                     </li>
-                    <li><a href="#" class="collapsible">Acteurs</a>
+                    <li><a class="collapsible">Acteurs</a>
                         <ul>
-                            <li><a href="#">Top 2019</a></li>
-                            <li><a href="#">Meilleurs films</a></li>
-                            <li><a href="#">Box office</a></li>
-                            <li><a href="#">Tous les films</a></li>
+                        <?php
+include('php/RequetesFilm.php');
+while ($donnees = $acteurs->fetch())
+{
+?>   
+                            <li><a href="acteur.php?Id_Acteur=<?php echo $donnees['Id_Acteur']; ?>"><?php echo $donnees['Nom_Acteur']; ?></a></li>
+                            <?php   
+    }
+$acteurs->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+?>
                         </ul>
                     </li>
                 </ul>
@@ -73,26 +101,19 @@
                 <ul id="menu-accordeon">
                     <input type="search" id="site-search" name="q" aria-label="Search through site content">
                     <button>Rechercher</button>
-                    <li><a href="#" class="collapsible">Films</a>
+                    <li><a class="collapsible">Genres</a>
                         <ul>
-                            <li><a href="#" class="collapsible">Action</a>
+                        <?php
+include('php/RequetesFilm.php');
+while ($donnees = $genres->fetch())
+{
+?>
+                            <li><a href="#" class="collapsible"><?php echo $donnees['Type_Genre']; ?></a></li>
+                            <?php   
+    }
+$genres->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+?>
 
-                            </li>
-                            <li><a href="#" class="collapsible">Science-fiction</a>
-
-                            </li>
-                            <li><a href="#" class="collapsible">Comédie</a>
-
-                            </li>
-                            <li><a href="#" class="collapsible">Drame</a>
-
-                            </li>
-                            <li><a href="#" class="collapsible">Animation</a>
-
-                            </li>
-                            <li><a href="#" class="collapsible">Horreur</a>
-
-                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -105,10 +126,9 @@
         <div class="col-lg-9 col-md-8 col-sm-8">
             <div class="liens_films fadeInUp animated">
                 <div class="titre"> Nouveautés </div><br />
-                <!---- on appelle la requete IMAGE_FILM + ID_FILM ----->
-                <?php include('php/Requetesfilm.php');
-// on ouvre la boucle
-while ($donnees = $affiches->fetch())
+                <?php
+include('php/RequetesFilm.php');
+while ($donnees = $films->fetch())
 {
 ?>
                 <a href="content.php?id=<?php echo $donnees['Id_Film'];?>"><img class="effect "
@@ -117,7 +137,7 @@ while ($donnees = $affiches->fetch())
                 </a>
                 <?php   
     }
-$affiches->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
+$films->closeCursor(); // on ferme la boucle et termine le traitement de la requete IMAGE_FILM + ID_FILM
 ?>
             </div>
         </div>
@@ -128,9 +148,9 @@ $affiches->closeCursor(); // on ferme la boucle et termine le traitement de la r
 
 
     <!--//////////////////////////////  FOOTER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-
+<footer>
     <?php include('footer.php');?>
-
+</footer>
     <!--//////////////////////////////  BACK TO TOP BTN  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
     <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
