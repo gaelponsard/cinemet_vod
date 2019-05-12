@@ -19,9 +19,10 @@
   <!--mon CSS -->
   <link rel="stylesheet" href="css/style_pages_cont_real_act.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/carousel.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="slider_home/engine1/style.css">
-  <link rel="stylesheet" href="css/carousel.css">
+  
 
  <!--------------- WOWSLIDER ------------------>
 <script type="text/javascript" src="slider_home/engine1/jquery.js"></script>
@@ -40,28 +41,28 @@ include('header.php');?>
   <div id="wowslider-container1">
     <div class="ws_images">
       <ul>
-        <li><a href="#" target="_self"><img src="slider_home/data1/images/01.jpg" alt="Avengers: Endgame"
+        <li><a href="allo_films.php" target="_self"><img src="slider_home/data1/images/01.jpg" alt="Avengers: Endgame"
               title="Avengers: Endgame" id="wows1_0" /></a>Phase finale pour les vengeurs...</li>
-        <li><a href="#"><img src="slider_home/data1/images/02.jpg" alt="Alita: Battle Angel" title="Alita: Battle Angel"
+        <li><a href="allo_films.php"><img src="slider_home/data1/images/02.jpg" alt="Alita: Battle Angel" title="Alita: Battle Angel"
               id="wows1_1" /></a>Le chef d'oeuvre de Cameron et Rodriguez !</li>
-        <li><a href="#"><img src="slider_home/data1/images/03.jpg" alt="John Wick Parabellum"
+        <li><a href="allo_films.php"><img src="slider_home/data1/images/03.jpg" alt="John Wick Parabellum"
               title="John Wick Parabellum" id="wows1_2" /></a>Sa tête est mise à prix !</li>
-        <li><a href="#"><img src="slider_home/data1/images/04.jpg" alt="Dumbo" title="Dumbo" id="wows1_3" /></a>Quand
+        <li><a href="content.php?id=10"><img src="slider_home/data1/images/04.jpg" alt="Dumbo" title="Dumbo" id="wows1_3" /></a>Quand
           Burton retrouve Disney</li>
-        <li><a href="#" target="_self"><img src="slider_home/data1/images/05.jpg" alt="Notre sélection 90's"
+        <li><a href="allo_films.php" target="_self"><img src="slider_home/data1/images/05.jpg" alt="Notre sélection 90's"
               title="Notre sélection 90's" id="wows1_4" /></a>Un bon cru à découvrir !</li>
       </ul>
     </div>
     <div class="ws_bullets">
       <div>
-        <a href="#" title="Avengers: Endgame"><span><img src="slider_home/data1/tooltips/01.jpg"
+        <a href="allo_films.php" title="Avengers: Endgame"><span><img src="slider_home/data1/tooltips/01.jpg"
               alt="Avengers: Endgame" />1</span></a>
-        <a href="#" title="Alita: Battle Angel"><span><img src="slider_home/data1/tooltips/02.jpg"
+        <a href="allo_films.php" title="Alita: Battle Angel"><span><img src="slider_home/data1/tooltips/02.jpg"
               alt="Alita: Battle Angel" />2</span></a>
-        <a href="#" title="John Wick Parabellum"><span><img src="slider_home/data1/tooltips/03.jpg"
+        <a href="allo_films.php" title="John Wick Parabellum"><span><img src="slider_home/data1/tooltips/03.jpg"
               alt="John Wick Parabellum" />3</span></a>
-        <a href="#" title="Dumbo"><span><img src="slider_home/data1/tooltips/04.jpg" alt="Dumbo" />4</span></a>
-        <a href="#" title="Notre sélection 90's"><span><img src="slider_home/data1/tooltips/05.jpg"
+        <a href="content.php?id=10" title="Dumbo"><span><img src="slider_home/data1/tooltips/04.jpg" alt="Dumbo" />4</span></a>
+        <a href="allo_films.php" title="Notre sélection 90's"><span><img src="slider_home/data1/tooltips/05.jpg"
               alt="Notre sélection 90's" />5</span></a>
       </div>
     </div>
@@ -79,31 +80,32 @@ include('header.php');?>
     <div id="carousel">
 
       <div class="hideLeft">
-        <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg">
+        <a href="content.php?id=1"><img src="img/1.jpg"></a>
       </div>
 
       <div class="prevLeftSecond">
-        <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg">
+      <a href="content.php?id=2"><img src="img/2.jpg"></a>
       </div>
 
       <div class="prev">
-        <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg">
+      <a href="content.php?id=3"><img src="img/3.jpg"></a>
       </div>
 
       <div class="selected">
-        <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg">
+      <a href="content.php?id=4"><img src="img/4.jpg"></a>
       </div>
 
       <div class="next">
-        <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+      <a href="content.php?id=5"><img src="img/5.jpg"></a>
+        
       </div>
 
       <div class="nextRightSecond">
-        <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg">
+      <a href="content.php?id=6"><img src="img/6.jpg"></a>
       </div>
 
       <div class="hideRight">
-        <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg">
+      <a href="content.php?id=7"><img src="img/7.jpg"></a>
       </div>
 
     </div>

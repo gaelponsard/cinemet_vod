@@ -10,7 +10,7 @@
 	width: 100%;
 	max-width: 100%;
 	max-height:1080px;
-	margin:0px auto 0px;
+	margin:60px auto 0px;
 	z-index:90;
 	text-align:left; /* reset align=center */
 	font-size: 10px;
@@ -278,7 +278,7 @@
 	position: absolute;
     font: 3.8em Helvetica, Arial, Verdana, sans-serif;
 	bottom:8%;
-	left: 0;
+	left: 10%;
 	margin-right:0.25em;
 	z-index: 50;
 	color: #fff;
@@ -305,7 +305,7 @@
 @-moz-keyframes wsBasic{0%{left:-0%} 10%{left:-0%} 20%{left:-100%} 30%{left:-100%} 40%{left:-200%} 50%{left:-200%} 60%{left:-300%} 70%{left:-300%} 80%{left:-400%} 90%{left:-400%} }
 @-webkit-keyframes wsBasic{0%{left:-0%} 10%{left:-0%} 20%{left:-100%} 30%{left:-100%} 40%{left:-200%} 50%{left:-200%} 60%{left:-300%} 70%{left:-300%} 80%{left:-400%} 90%{left:-400%} }
 
-#wowslider-container1 .ws_shadow{
+/*#wowslider-container1 .ws_shadow{
 	background: url(./shadow.png) left 100%;
 	background-repeat: no-repeat;
 	background-size:100%;
@@ -315,7 +315,7 @@
 	left:0;
 	bottom:-6%;
 	z-index:-1;
-}
+}*/
 * html #wowslider-container1 .ws_shadow{/*ie6*/
 	background:none;
 	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader( src='engine1/shadow.png', sizingMethod='scale');
