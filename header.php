@@ -12,9 +12,8 @@
       <a href="index.php" id="logo">ALLOCINE<strong>MET</strong></a>
       <div id="Navbar">
         <a class="liens" href="allo_films.php">FILMS </a>
+        <a class="liens" href="#">CONNEXION </a>
         <a class="liens" href="contact.php">CONTACT </a>
-        <a class="liens" href="acteur.php">ACTEURS </a>
-        <a class="liens" href="realisateur.php">REALISATEURS </a>
       </div>
       <div class="m-nav-toggle">
         <span class="m-toggle-icon"></span>

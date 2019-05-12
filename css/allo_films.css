@@ -19,7 +19,7 @@ body {
  width:70%;
  margin:auto;
  font-weight:bolder;
- font-family: 'Poiret One', cursive;
+ /*font-family: 'Poiret One', cursive;*/
  font-size: 20px;
 }
 
@@ -31,7 +31,7 @@ body {
  padding-left:3%;
  padding-top:10px;
  padding-bottom:10px;
- background-color:transparent;
+ background-color:black;
  font-size: 1.8em;
 }
 
