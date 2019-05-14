@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 12 mai 2019 à 21:14
--- Version du serveur :  5.7.24
--- Version de PHP :  7.2.14
+-- Client :  localhost
+-- Généré le :  Mar 14 Mai 2019 à 10:53
+-- Version du serveur :  5.7.25-0ubuntu0.18.04.2
+-- Version de PHP :  7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `metropolis`
+-- Base de données :  `allocinemet_vod`
 --
 
 -- --------------------------------------------------------
@@ -28,17 +26,15 @@ SET time_zone = "+00:00";
 -- Structure de la table `acteur`
 --
 
-DROP TABLE IF EXISTS `acteur`;
-CREATE TABLE IF NOT EXISTS `acteur` (
-  `Id_Acteur` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `acteur` (
+  `Id_Acteur` int(11) NOT NULL,
   `Nom_Acteur` varchar(255) NOT NULL,
   `Image_Acteur` varchar(255) NOT NULL,
-  `Bio_Acteur` text NOT NULL,
-  PRIMARY KEY (`Id_Acteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+  `Bio_Acteur` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `acteur`
+-- Contenu de la table `acteur`
 --
 
 INSERT INTO `acteur` (`Id_Acteur`, `Nom_Acteur`, `Image_Acteur`, `Bio_Acteur`) VALUES
@@ -74,22 +70,31 @@ INSERT INTO `acteur` (`Id_Acteur`, `Nom_Acteur`, `Image_Acteur`, `Bio_Acteur`) V
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `etre`
+--
+
+CREATE TABLE `etre` (
+  `Id_Role` int(11) NOT NULL,
+  `Id_Membre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `film`
 --
 
-DROP TABLE IF EXISTS `film`;
-CREATE TABLE IF NOT EXISTS `film` (
-  `Id_Film` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `film` (
+  `Id_Film` int(11) NOT NULL,
   `Titre_Film` varchar(255) NOT NULL,
   `Duree` varchar(255) NOT NULL,
   `Image_Film` varchar(255) NOT NULL,
   `Video_Film` varchar(255) NOT NULL,
-  `Synopsis` text NOT NULL,
-  PRIMARY KEY (`Id_Film`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+  `Synopsis` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `film`
+-- Contenu de la table `film`
 --
 
 INSERT INTO `film` (`Id_Film`, `Titre_Film`, `Duree`, `Image_Film`, `Video_Film`, `Synopsis`) VALUES
@@ -110,15 +115,13 @@ INSERT INTO `film` (`Id_Film`, `Titre_Film`, `Duree`, `Image_Film`, `Video_Film`
 -- Structure de la table `genre`
 --
 
-DROP TABLE IF EXISTS `genre`;
-CREATE TABLE IF NOT EXISTS `genre` (
-  `Id_Genre` int(11) NOT NULL AUTO_INCREMENT,
-  `Type_Genre` varchar(255) NOT NULL,
-  PRIMARY KEY (`Id_Genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+CREATE TABLE `genre` (
+  `Id_Genre` int(11) NOT NULL,
+  `Type_Genre` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `genre`
+-- Contenu de la table `genre`
 --
 
 INSERT INTO `genre` (`Id_Genre`, `Type_Genre`) VALUES
@@ -140,46 +143,43 @@ INSERT INTO `genre` (`Id_Genre`, `Type_Genre`) VALUES
 -- Structure de la table `jouer`
 --
 
-DROP TABLE IF EXISTS `jouer`;
-CREATE TABLE IF NOT EXISTS `jouer` (
-  `Id_Film` int(11) NOT NULL,
+CREATE TABLE `jouer` (
   `Id_Acteur` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Film`,`Id_Acteur`),
-  KEY `Jouer_Acteur1_FK` (`Id_Acteur`)
+  `Id_Film` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `jouer`
+-- Contenu de la table `jouer`
 --
 
-INSERT INTO `jouer` (`Id_Film`, `Id_Acteur`) VALUES
-(10, 1),
-(10, 2),
+INSERT INTO `jouer` (`Id_Acteur`, `Id_Film`) VALUES
+(5, 1),
+(6, 1),
+(7, 2),
+(8, 2),
+(9, 3),
 (10, 3),
-(10, 4),
-(1, 5),
-(1, 6),
-(2, 7),
-(2, 8),
-(3, 9),
+(11, 4),
+(12, 4),
+(13, 4),
+(14, 4),
+(15, 5),
+(16, 5),
+(17, 5),
+(18, 6),
+(19, 6),
+(20, 7),
+(21, 7),
+(22, 7),
+(23, 7),
+(24, 8),
+(25, 8),
+(26, 9),
+(27, 9),
+(1, 10),
+(2, 10),
 (3, 10),
-(4, 11),
-(4, 12),
-(4, 13),
-(4, 14),
-(5, 15),
-(5, 16),
-(5, 17),
-(6, 18),
-(6, 19),
-(7, 20),
-(7, 21),
-(7, 22),
-(7, 23),
-(8, 24),
-(8, 25),
-(9, 26),
-(9, 27);
+(4, 10);
 
 -- --------------------------------------------------------
 
@@ -187,15 +187,11 @@ INSERT INTO `jouer` (`Id_Film`, `Id_Acteur`) VALUES
 -- Structure de la table `membre`
 --
 
-DROP TABLE IF EXISTS `membre`;
-CREATE TABLE IF NOT EXISTS `membre` (
-  `Id_Membre` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `membre` (
+  `Id_Membre` int(11) NOT NULL,
   `Login_Membre` varchar(255) NOT NULL,
   `Password_Membre` varchar(255) NOT NULL,
-  `Email_Membre` varchar(255) NOT NULL,
-  `Id_Role` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Membre`),
-  UNIQUE KEY `Membre_Role0_AK` (`Id_Role`)
+  `Email_Membre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -204,18 +200,12 @@ CREATE TABLE IF NOT EXISTS `membre` (
 -- Structure de la table `modifier`
 --
 
-DROP TABLE IF EXISTS `modifier`;
-CREATE TABLE IF NOT EXISTS `modifier` (
+CREATE TABLE `modifier` (
   `Id_Membre` int(11) NOT NULL,
-  `Id_Acteur` int(11) NOT NULL,
   `Id_Realisateur` int(11) NOT NULL,
+  `Id_Acteur` int(11) NOT NULL,
   `Id_Film` int(11) NOT NULL,
-  `Id_Genre` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Membre`,`Id_Acteur`,`Id_Realisateur`,`Id_Film`,`Id_Genre`),
-  KEY `Modifier_Acteur1_FK` (`Id_Acteur`),
-  KEY `Modifier_Realisateur2_FK` (`Id_Realisateur`),
-  KEY `Modifier_Film3_FK` (`Id_Film`),
-  KEY `Modifier_Genre4_FK` (`Id_Genre`)
+  `Id_Genre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -224,17 +214,15 @@ CREATE TABLE IF NOT EXISTS `modifier` (
 -- Structure de la table `realisateur`
 --
 
-DROP TABLE IF EXISTS `realisateur`;
-CREATE TABLE IF NOT EXISTS `realisateur` (
-  `Id_Realisateur` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `realisateur` (
+  `Id_Realisateur` int(11) NOT NULL,
   `Nom_Realisateur` varchar(255) NOT NULL,
   `Image_Realisateur` varchar(255) NOT NULL,
-  `Bio_Realisateur` text NOT NULL,
-  PRIMARY KEY (`Id_Realisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `Bio_Realisateur` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `realisateur`
+-- Contenu de la table `realisateur`
 --
 
 INSERT INTO `realisateur` (`Id_Realisateur`, `Nom_Realisateur`, `Image_Realisateur`, `Bio_Realisateur`) VALUES
@@ -257,16 +245,13 @@ INSERT INTO `realisateur` (`Id_Realisateur`, `Nom_Realisateur`, `Image_Realisate
 -- Structure de la table `realiser`
 --
 
-DROP TABLE IF EXISTS `realiser`;
-CREATE TABLE IF NOT EXISTS `realiser` (
+CREATE TABLE `realiser` (
   `Id_Realisateur` int(11) NOT NULL,
-  `Id_Film` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Realisateur`,`Id_Film`),
-  KEY `Realiser_Film1_FK` (`Id_Film`)
+  `Id_Film` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `realiser`
+-- Contenu de la table `realiser`
 --
 
 INSERT INTO `realiser` (`Id_Realisateur`, `Id_Film`) VALUES
@@ -289,14 +274,9 @@ INSERT INTO `realiser` (`Id_Realisateur`, `Id_Film`) VALUES
 -- Structure de la table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE IF NOT EXISTS `role` (
-  `Id_Role` int(11) NOT NULL AUTO_INCREMENT,
-  `Administrateur` varchar(255) NOT NULL,
-  `Utilisateur` varchar(255) NOT NULL,
-  `Id_Membre` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Role`),
-  UNIQUE KEY `Role_Membre0_AK` (`Id_Membre`)
+CREATE TABLE `role` (
+  `Id_Role` int(11) NOT NULL,
+  `Type_Role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -305,16 +285,13 @@ CREATE TABLE IF NOT EXISTS `role` (
 -- Structure de la table `soumettre`
 --
 
-DROP TABLE IF EXISTS `soumettre`;
-CREATE TABLE IF NOT EXISTS `soumettre` (
+CREATE TABLE `soumettre` (
   `Id_Film` int(11) NOT NULL,
-  `Id_Genre` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Film`,`Id_Genre`),
-  KEY `Soumettre_Genre1_FK` (`Id_Genre`)
+  `Id_Genre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `soumettre`
+-- Contenu de la table `soumettre`
 --
 
 INSERT INTO `soumettre` (`Id_Film`, `Id_Genre`) VALUES
@@ -341,52 +318,158 @@ INSERT INTO `soumettre` (`Id_Film`, `Id_Genre`) VALUES
 (9, 11);
 
 --
--- Contraintes pour les tables déchargées
+-- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `acteur`
+--
+ALTER TABLE `acteur`
+  ADD PRIMARY KEY (`Id_Acteur`);
+
+--
+-- Index pour la table `etre`
+--
+ALTER TABLE `etre`
+  ADD PRIMARY KEY (`Id_Role`,`Id_Membre`),
+  ADD KEY `etre_membre0_FK` (`Id_Membre`);
+
+--
+-- Index pour la table `film`
+--
+ALTER TABLE `film`
+  ADD PRIMARY KEY (`Id_Film`);
+
+--
+-- Index pour la table `genre`
+--
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`Id_Genre`);
+
+--
+-- Index pour la table `jouer`
+--
+ALTER TABLE `jouer`
+  ADD PRIMARY KEY (`Id_Acteur`,`Id_Film`),
+  ADD KEY `jouer_film0_FK` (`Id_Film`);
+
+--
+-- Index pour la table `membre`
+--
+ALTER TABLE `membre`
+  ADD PRIMARY KEY (`Id_Membre`);
+
+--
+-- Index pour la table `modifier`
+--
+ALTER TABLE `modifier`
+  ADD PRIMARY KEY (`Id_Membre`,`Id_Realisateur`,`Id_Acteur`,`Id_Film`,`Id_Genre`),
+  ADD KEY `modifier_realisateur0_FK` (`Id_Realisateur`),
+  ADD KEY `modifier_acteur1_FK` (`Id_Acteur`),
+  ADD KEY `modifier_film2_FK` (`Id_Film`),
+  ADD KEY `modifier_genre3_FK` (`Id_Genre`);
+
+--
+-- Index pour la table `realisateur`
+--
+ALTER TABLE `realisateur`
+  ADD PRIMARY KEY (`Id_Realisateur`);
+
+--
+-- Index pour la table `realiser`
+--
+ALTER TABLE `realiser`
+  ADD PRIMARY KEY (`Id_Realisateur`,`Id_Film`),
+  ADD KEY `realiser_film0_FK` (`Id_Film`);
+
+--
+-- Index pour la table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`Id_Role`);
+
+--
+-- Index pour la table `soumettre`
+--
+ALTER TABLE `soumettre`
+  ADD PRIMARY KEY (`Id_Film`,`Id_Genre`),
+  ADD KEY `soumettre_genre0_FK` (`Id_Genre`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `acteur`
+--
+ALTER TABLE `acteur`
+  MODIFY `Id_Acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT pour la table `film`
+--
+ALTER TABLE `film`
+  MODIFY `Id_Film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `Id_Genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT pour la table `membre`
+--
+ALTER TABLE `membre`
+  MODIFY `Id_Membre` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `realisateur`
+--
+ALTER TABLE `realisateur`
+  MODIFY `Id_Realisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT pour la table `role`
+--
+ALTER TABLE `role`
+  MODIFY `Id_Role` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `etre`
+--
+ALTER TABLE `etre`
+  ADD CONSTRAINT `etre_membre0_FK` FOREIGN KEY (`Id_Membre`) REFERENCES `membre` (`Id_Membre`),
+  ADD CONSTRAINT `etre_role_FK` FOREIGN KEY (`Id_Role`) REFERENCES `role` (`Id_Role`);
 
 --
 -- Contraintes pour la table `jouer`
 --
 ALTER TABLE `jouer`
-  ADD CONSTRAINT `Jouer_Acteur1_FK` FOREIGN KEY (`Id_Acteur`) REFERENCES `acteur` (`Id_Acteur`),
-  ADD CONSTRAINT `Jouer_Film0_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`);
-
---
--- Contraintes pour la table `membre`
---
-ALTER TABLE `membre`
-  ADD CONSTRAINT `Membre_Role0_FK` FOREIGN KEY (`Id_Role`) REFERENCES `role` (`Id_Role`);
+  ADD CONSTRAINT `jouer_acteur_FK` FOREIGN KEY (`Id_Acteur`) REFERENCES `acteur` (`Id_Acteur`),
+  ADD CONSTRAINT `jouer_film0_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`);
 
 --
 -- Contraintes pour la table `modifier`
 --
 ALTER TABLE `modifier`
-  ADD CONSTRAINT `Modifier_Acteur1_FK` FOREIGN KEY (`Id_Acteur`) REFERENCES `acteur` (`Id_Acteur`),
-  ADD CONSTRAINT `Modifier_Film3_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
-  ADD CONSTRAINT `Modifier_Genre4_FK` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`),
-  ADD CONSTRAINT `Modifier_Membre0_FK` FOREIGN KEY (`Id_Membre`) REFERENCES `membre` (`Id_Membre`),
-  ADD CONSTRAINT `Modifier_Realisateur2_FK` FOREIGN KEY (`Id_Realisateur`) REFERENCES `realisateur` (`Id_Realisateur`);
+  ADD CONSTRAINT `modifier_acteur1_FK` FOREIGN KEY (`Id_Acteur`) REFERENCES `acteur` (`Id_Acteur`),
+  ADD CONSTRAINT `modifier_film2_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
+  ADD CONSTRAINT `modifier_genre3_FK` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`),
+  ADD CONSTRAINT `modifier_membre_FK` FOREIGN KEY (`Id_Membre`) REFERENCES `membre` (`Id_Membre`),
+  ADD CONSTRAINT `modifier_realisateur0_FK` FOREIGN KEY (`Id_Realisateur`) REFERENCES `realisateur` (`Id_Realisateur`);
 
 --
 -- Contraintes pour la table `realiser`
 --
 ALTER TABLE `realiser`
-  ADD CONSTRAINT `Realiser_Film1_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
-  ADD CONSTRAINT `Realiser_Realisateur0_FK` FOREIGN KEY (`Id_Realisateur`) REFERENCES `realisateur` (`Id_Realisateur`);
-
---
--- Contraintes pour la table `role`
---
-ALTER TABLE `role`
-  ADD CONSTRAINT `Role_Membre0_FK` FOREIGN KEY (`Id_Membre`) REFERENCES `membre` (`Id_Membre`);
+  ADD CONSTRAINT `realiser_film0_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
+  ADD CONSTRAINT `realiser_realisateur_FK` FOREIGN KEY (`Id_Realisateur`) REFERENCES `realisateur` (`Id_Realisateur`);
 
 --
 -- Contraintes pour la table `soumettre`
 --
 ALTER TABLE `soumettre`
-  ADD CONSTRAINT `Soumettre_Film0_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
-  ADD CONSTRAINT `Soumettre_Genre1_FK` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`);
-COMMIT;
+  ADD CONSTRAINT `soumettre_film_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
+  ADD CONSTRAINT `soumettre_genre0_FK` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
