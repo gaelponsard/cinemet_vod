@@ -6,18 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/form_inscription.css">
     <title>Inscription</title>
-</head>
-<body>
 
 <!---------CONNECTION A LA BDD --------->
 <?php include('php/Connect_BDD.php');
 
 
-
-//////////////////////////////  NAVBAR  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-include('header.php');
-
-///////////////////////////// FORMULAIRE INSCRIPTION /////////////////////////////
+///////////////////////////// PHP FORMULAIRE INSCRIPTION /////////////////////////////
 
 if(isset($_POST['forminscription'])) {
    $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -58,6 +52,13 @@ if(isset($_POST['forminscription'])) {
    }
 }
 ?>
+
+</head>
+<body>
+<!------  NAVBAR  ------->
+
+<?php include('header.php'); ?>
+
 
 <div align="center">
          <h2>Inscription</h2>
