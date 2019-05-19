@@ -133,7 +133,7 @@ while ($donnees = $films->fetch())
 {
 ?>
                 <a href="content.php?id=<?php echo $donnees['Id_Film'];?>"><img class="effect "
-                        src="<?php echo $donnees['Image_Film']; ?>">
+                        src="img/<?php echo $donnees['Image_Film']; ?>.jpg">
 
                 </a>
                 <?php   

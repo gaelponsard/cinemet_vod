@@ -142,7 +142,7 @@ while ($donnees = $affichesgenre->fetch())
 ?>
                 
                 <a href="content.php?id=<?php echo $donnees['Id_Film'];?>"><img class="effect "
-                        src="<?php echo $donnees['Image_Film']; ?>">
+                        src="img/<?php echo $donnees['Image_Film']; ?>.jpg">
                         <?php   
     }
 $affichesgenre->closeCursor(); // on ferme la boucle et termine le traitement de la requete pour les affiches des films triés par GENRE
