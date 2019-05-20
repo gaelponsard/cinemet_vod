@@ -60,6 +60,9 @@ if(isset($_POST['formconnexion'])) {
              <br /><br />
              <input type="submit" name="formconnexion" value="Se connecter !" />
           </form>
+          <br>
+          <br>
+          <center><a href="inscription.php"><strong>S'inscrire</strong></a></center>
           <?php
           if(isset($erreur)) {
              echo '<font color="red">'.$erreur."</font>";

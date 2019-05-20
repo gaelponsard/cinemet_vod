@@ -2,7 +2,7 @@
 
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=cinemet_vod;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=localhost;dbname=allocinemet_vod;charset=utf8', 'commun', 'commun');
 }
 catch (PDOexception $e)
 {
