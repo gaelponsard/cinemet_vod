@@ -29,14 +29,14 @@ if(isset($_POST['titre_film'], $_POST['synopsis'], $_POST['image_film'], $_POST[
       
       $titre_film = htmlspecialchars($_POST['titre_film']);
       $synopsis = htmlspecialchars($_POST['synopsis']);
-      $synopsis = htmlspecialchars($_POST['image_film']);
-      $synopsis = htmlspecialchars($_POST['duree']);
-      $synopsis = htmlspecialchars($_POST['video_film']);
+      $image_film = htmlspecialchars($_POST['image_film']);
+      $duree = htmlspecialchars($_POST['duree']);
+      $video_film = htmlspecialchars($_POST['video_film']);
 
       if($mode_edition == 0) {
          // var_dump($_FILES);
          // var_dump(exif_imagetype($_FILES['miniature']['tmp_name']));
-         $ins = $bdd->prepare('INSERT INTO articles (Titre_Film, Synopsis, Image_Film, Duree, Video_Film) VALUES (?, ?, ?, ?, ?');
+         $ins = $bdd->prepare('INSERT INTO film (Titre_Film, Synopsis, Image_Film, Duree, Video_Film) VALUES (?, ?, ?, ?, ?');
          $ins->execute(array($titre_film, $synopsis, $image_film, $duree, $video_film));
          $lastid = $bdd->lastInsertId();
          
@@ -52,7 +52,7 @@ if(isset($_POST['titre_film'], $_POST['synopsis'], $_POST['image_film'], $_POST[
       } else {
          $update = $bdd->prepare('UPDATE film SET Titre_Film = ?, Synopsis = ?, Image_Film = ?, Duree = ?, Video_Film = ? WHERE Id_Film = ?');
          $update->execute(array($titre_film, $synopsis, $image_film, $duree, $video_film, $edit_id));
-         header('Location: http://127.0.0.1/Tutos_PHP/Articles/article.php?id='.$edit_id);
+         header('Location: allo_films.php?id='.$edit_id);
          $message = 'Votre film a bien été mis à jour !';
       }
    } else {
