@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Mar 14 Mai 2019 à 10:53
--- Version du serveur :  5.7.25-0ubuntu0.18.04.2
--- Version de PHP :  7.2.17-0ubuntu0.18.04.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 20 mai 2019 à 06:09
+-- Version du serveur :  5.7.24
+-- Version de PHP :  7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `allocinemet_vod`
+-- Base de données :  `cinemet_vod`
 --
 
 -- --------------------------------------------------------
@@ -26,15 +28,17 @@ SET time_zone = "+00:00";
 -- Structure de la table `acteur`
 --
 
-CREATE TABLE `acteur` (
-  `Id_Acteur` int(11) NOT NULL,
+DROP TABLE IF EXISTS `acteur`;
+CREATE TABLE IF NOT EXISTS `acteur` (
+  `Id_Acteur` int(11) NOT NULL AUTO_INCREMENT,
   `Nom_Acteur` varchar(255) NOT NULL,
   `Image_Acteur` varchar(255) NOT NULL,
-  `Bio_Acteur` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Bio_Acteur` text NOT NULL,
+  PRIMARY KEY (`Id_Acteur`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `acteur`
+-- Déchargement des données de la table `acteur`
 --
 
 INSERT INTO `acteur` (`Id_Acteur`, `Nom_Acteur`, `Image_Acteur`, `Bio_Acteur`) VALUES
@@ -73,10 +77,21 @@ INSERT INTO `acteur` (`Id_Acteur`, `Nom_Acteur`, `Image_Acteur`, `Bio_Acteur`) V
 -- Structure de la table `etre`
 --
 
-CREATE TABLE `etre` (
+DROP TABLE IF EXISTS `etre`;
+CREATE TABLE IF NOT EXISTS `etre` (
   `Id_Role` int(11) NOT NULL,
-  `Id_Membre` int(11) NOT NULL
+  `Id_Membre` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Role`,`Id_Membre`),
+  KEY `etre_membre0_FK` (`Id_Membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `etre`
+--
+
+INSERT INTO `etre` (`Id_Role`, `Id_Membre`) VALUES
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -84,30 +99,32 @@ CREATE TABLE `etre` (
 -- Structure de la table `film`
 --
 
-CREATE TABLE `film` (
-  `Id_Film` int(11) NOT NULL,
+DROP TABLE IF EXISTS `film`;
+CREATE TABLE IF NOT EXISTS `film` (
+  `Id_Film` int(11) NOT NULL AUTO_INCREMENT,
   `Titre_Film` varchar(255) NOT NULL,
   `Duree` varchar(255) NOT NULL,
   `Image_Film` varchar(255) NOT NULL,
   `Video_Film` varchar(255) NOT NULL,
-  `Synopsis` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Synopsis` text NOT NULL,
+  PRIMARY KEY (`Id_Film`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `film`
+-- Déchargement des données de la table `film`
 --
 
 INSERT INTO `film` (`Id_Film`, `Titre_Film`, `Duree`, `Image_Film`, `Video_Film`, `Synopsis`) VALUES
-(1, 'After-Chapitre 1', '1h25min', 'img/1.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/lb9HUR5k2gU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Depuis son plus jeune âge, Tessa était promise à un avenir tout tracé : une vie rangée, une brillante carrière, un mariage tranquille avec son fiancé de toujours. Jusqu’à sa rencontre avec Hardin à son arrivée à l’université. Grossier, provocateur, cruel, c’est le garçon le plus détestable qu’elle ait jamais croisé. Et pourtant, ce bad boy tatoué pourrait bien lui faire perdre tout contrôle… '),
-(2, 'Greenbook', '2h05min', 'img/2.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/GhdFHzVNDlQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'En 1962, alors que règne la ségrégation, Tony Lip, un videur italo-américain du Bronx, est engagé pour conduire et protéger le Dr Don Shirley, un pianiste noir de renommée mondiale, lors d\'une tournée de concerts. Durant leur périple de Manhattan jusqu\'au Sud profond, ils doivent se confronter aux humiliations, perceptions et persécutions, tout en devant trouver des établissements accueillant les personnes de couleurs.'),
-(3, 'Le Chant du loup', '1h55min', 'img/3.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0-LTTNiGgUA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Un jeune homme a le don rare de reconnaître chaque son qu’il entend. A bord d’un sous-marin nucléaire français, tout repose sur lui, l’Oreille d’Or.\r\nRéputé infaillible, il commet pourtant une erreur qui met l’équipage en danger de mort. Il veut retrouver la confiance de ses camarades mais sa quête les entraîne dans une situation encore plus dramatique.\r\nDans le monde de la dissuasion nucléaire et de la désinformation, ils se retrouvent tous pris au piège d’un engrenage incontrôlable. '),
-(4, 'Avengers: Infinity War', '2h40min', 'img/4.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/eIWs2IUr3Vs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Les Avengers et leurs alliés devront être prêts à tout sacrifier pour neutraliser le redoutable Thanos avant que son attaque éclair ne conduise à la destruction complète de l’univers. '),
-(5, 'Dragons 3', '1h40min', 'img/5.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/tEUFQ8mdzcg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Harold est maintenant le chef de Berk au côté d’Astrid et Krokmou, en tant que dragon, est devenu le leader de son espèce. Ils réalisent enfin leurs rêves de vivre en paix entre vikings et dragons. Mais lorsque l’apparition soudaine d’une Furie Eclair coïncide avec la plus grande menace que le village n’ait jamais connue, Harold et Krokmou sont forcés de quitter leur village pour un voyage dans un monde caché dont ils n’auraient jamais soupçonnés l’existence. Alors que leurs véritables destins se révèlent, dragons et vikings vont se battre ensemble jusqu’au bout du monde pour protéger tout ce qu’ils chérissent. '),
-(6, 'A Star Is Born', '2h14min', 'img/6.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jsg9NxCBzFs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Star de country un peu oubliée, Jackson Maine découvre Ally, une jeune chanteuse très prometteuse. Tandis qu\'ils tombent follement amoureux l\'un de l\'autre, Jack propulse Ally sur le devant de la scène et fait d\'elle une artiste adulée par le public. Bientôt éclipsé par le succès de la jeune femme, il vit de plus en plus de mal son propre déclin… '),
-(7, 'Astérix : Le Secret de la potion magique', '1h45min', 'img/7.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/gXbR3zonMRk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'À la suite d’une chute lors de la cueillette du gui, le druide Panoramix décide qu’il est temps d’assurer l’avenir du village. Accompagné d’Astérix et Obélix, il entreprend de parcourir le monde gaulois à la recherche d’un jeune druide talentueux à qui transmettre le Secret de la Potion Magique… '),
-(8, 'Nous finirons ensemble', '2h15min', 'img/8.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/RjfF0V5blEE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Préoccupé, Max est parti dans sa maison au bord de la mer pour se ressourcer. Sa bande de potes, qu’il n’a pas vue depuis plus de 3 ans débarque par surprise pour lui fêter son anniversaire ! La surprise est entière mais l’accueil l’est beaucoup moins... \r\nMax s’enfonce alors dans une comédie du bonheur qui sonne faux, et qui mettra le groupe dans des situations pour le moins inattendues.\r\nLes enfants ont grandi,  d’autres sont nés, les parents n’ont plus les mêmes priorités...  Les séparations, les accidents de la vie... Quand tous décident de ne plus mettre de petits mouchoirs sur les gros bobards, que reste-t-il de l’amitié ? '),
-(9, 'La Malédiction de la dame blanche', '1h33min', 'img/9.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/L7IQ_P9qtUk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'La Dame Blanche. Spectre terrifiant, pris en étau entre le paradis et l\'enfer, piégé par un terrible destin dont elle est elle-même l\'artisan. La seule évocation de son nom sème la terreur dans le monde depuis des siècles. Quand elle était en vie, elle a noyé ses enfants dans un accès de folle jalousie, puis, dévastée par le chagrin, elle s\'est jetée dans le fleuve déchaîné.\r\nDésormais, ses larmes sont devenues éternelles. Elles sont même mortelles et tous ceux qui entendent ses appels sinistres la nuit sont maudits. Tapie dans l\'ombre, la Dame Blanche s\'attaque aux enfants, cherchant désespérément à remplacer les siens. Au fil des siècles, elle est devenue de plus en plus prédatrice… et ses méthodes de plus en plus terrifiantes.\r\nLos Angeles, années 1970. La Dame Blanche hante la nuit… et les enfants.\r\nIgnorant les avertissements d\'une mère soupçonnée de violence sur mineurs, une assistante sociale et ses enfants sont projetés dans un monde surnaturel des plus effrayants. Pour espérer survivre à la fureur mortelle de la Dame Blanche, leur seul recours est un prêtre désabusé et ses pratiques mystiques destinées à repousser les forces du mal… à la frontière où la peur et la foi se rencontrent…\r\nMéfiez-vous de ses pleurs glaçants… Elle est prête à tout pour vous entraîner vers les ténèbres. Car sa douleur ne connaît pas de répit – son âme tourmentée n\'a pas droit au repos. Et il n\'existe aucun moyen d\'échapper à la malédiction de la Dame Blanche. '),
-(10, 'Dumbo', '1h52min', 'img/10.jpg', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-mPAnHDCm9Q\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Les enfants de Holt Farrier, ex-artiste de cirque chargé de s’occuper d’un éléphanteau dont les oreilles démesurées sont la risée du public, découvrent que ce dernier sait voler...');
+(1, 'After-Chapitre 1', '1h25min', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/lb9HUR5k2gU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Depuis son plus jeune âge, Tessa était promise à un avenir tout tracé : une vie rangée, une brillante carrière, un mariage tranquille avec son fiancé de toujours. Jusqu’à sa rencontre avec Hardin à son arrivée à l’université. Grossier, provocateur, cruel, c’est le garçon le plus détestable qu’elle ait jamais croisé. Et pourtant, ce bad boy tatoué pourrait bien lui faire perdre tout contrôle… '),
+(2, 'Greenbook', '2h05min', '2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/GhdFHzVNDlQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'En 1962, alors que règne la ségrégation, Tony Lip, un videur italo-américain du Bronx, est engagé pour conduire et protéger le Dr Don Shirley, un pianiste noir de renommée mondiale, lors d\'une tournée de concerts. Durant leur périple de Manhattan jusqu\'au Sud profond, ils doivent se confronter aux humiliations, perceptions et persécutions, tout en devant trouver des établissements accueillant les personnes de couleurs.'),
+(3, 'Le Chant du loup', '1h55min', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/0-LTTNiGgUA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Un jeune homme a le don rare de reconnaître chaque son qu’il entend. A bord d’un sous-marin nucléaire français, tout repose sur lui, l’Oreille d’Or.\r\nRéputé infaillible, il commet pourtant une erreur qui met l’équipage en danger de mort. Il veut retrouver la confiance de ses camarades mais sa quête les entraîne dans une situation encore plus dramatique.\r\nDans le monde de la dissuasion nucléaire et de la désinformation, ils se retrouvent tous pris au piège d’un engrenage incontrôlable. '),
+(4, 'Avengers: Infinity War', '2h40min', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/eIWs2IUr3Vs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Les Avengers et leurs alliés devront être prêts à tout sacrifier pour neutraliser le redoutable Thanos avant que son attaque éclair ne conduise à la destruction complète de l’univers. '),
+(5, 'Dragons 3', '1h40min', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/tEUFQ8mdzcg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Harold est maintenant le chef de Berk au côté d’Astrid et Krokmou, en tant que dragon, est devenu le leader de son espèce. Ils réalisent enfin leurs rêves de vivre en paix entre vikings et dragons. Mais lorsque l’apparition soudaine d’une Furie Eclair coïncide avec la plus grande menace que le village n’ait jamais connue, Harold et Krokmou sont forcés de quitter leur village pour un voyage dans un monde caché dont ils n’auraient jamais soupçonnés l’existence. Alors que leurs véritables destins se révèlent, dragons et vikings vont se battre ensemble jusqu’au bout du monde pour protéger tout ce qu’ils chérissent. '),
+(6, 'A Star Is Born', '2h14min', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jsg9NxCBzFs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Star de country un peu oubliée, Jackson Maine découvre Ally, une jeune chanteuse très prometteuse. Tandis qu\'ils tombent follement amoureux l\'un de l\'autre, Jack propulse Ally sur le devant de la scène et fait d\'elle une artiste adulée par le public. Bientôt éclipsé par le succès de la jeune femme, il vit de plus en plus de mal son propre déclin… '),
+(7, 'Astérix : Le Secret de la potion magique', '1h45min', '7', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/gXbR3zonMRk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'À la suite d’une chute lors de la cueillette du gui, le druide Panoramix décide qu’il est temps d’assurer l’avenir du village. Accompagné d’Astérix et Obélix, il entreprend de parcourir le monde gaulois à la recherche d’un jeune druide talentueux à qui transmettre le Secret de la Potion Magique… '),
+(8, 'Nous finirons ensemble', '2h15min', '8', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/RjfF0V5blEE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Préoccupé, Max est parti dans sa maison au bord de la mer pour se ressourcer. Sa bande de potes, qu’il n’a pas vue depuis plus de 3 ans débarque par surprise pour lui fêter son anniversaire ! La surprise est entière mais l’accueil l’est beaucoup moins... \r\nMax s’enfonce alors dans une comédie du bonheur qui sonne faux, et qui mettra le groupe dans des situations pour le moins inattendues.\r\nLes enfants ont grandi,  d’autres sont nés, les parents n’ont plus les mêmes priorités...  Les séparations, les accidents de la vie... Quand tous décident de ne plus mettre de petits mouchoirs sur les gros bobards, que reste-t-il de l’amitié ? '),
+(9, 'La Malédiction de la dame blanche', '1h33min', '9', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/L7IQ_P9qtUk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'La Dame Blanche. Spectre terrifiant, pris en étau entre le paradis et l\'enfer, piégé par un terrible destin dont elle est elle-même l\'artisan. La seule évocation de son nom sème la terreur dans le monde depuis des siècles. Quand elle était en vie, elle a noyé ses enfants dans un accès de folle jalousie, puis, dévastée par le chagrin, elle s\'est jetée dans le fleuve déchaîné.\r\nDésormais, ses larmes sont devenues éternelles. Elles sont même mortelles et tous ceux qui entendent ses appels sinistres la nuit sont maudits. Tapie dans l\'ombre, la Dame Blanche s\'attaque aux enfants, cherchant désespérément à remplacer les siens. Au fil des siècles, elle est devenue de plus en plus prédatrice… et ses méthodes de plus en plus terrifiantes.\r\nLos Angeles, années 1970. La Dame Blanche hante la nuit… et les enfants.\r\nIgnorant les avertissements d\'une mère soupçonnée de violence sur mineurs, une assistante sociale et ses enfants sont projetés dans un monde surnaturel des plus effrayants. Pour espérer survivre à la fureur mortelle de la Dame Blanche, leur seul recours est un prêtre désabusé et ses pratiques mystiques destinées à repousser les forces du mal… à la frontière où la peur et la foi se rencontrent…\r\nMéfiez-vous de ses pleurs glaçants… Elle est prête à tout pour vous entraîner vers les ténèbres. Car sa douleur ne connaît pas de répit – son âme tourmentée n\'a pas droit au repos. Et il n\'existe aucun moyen d\'échapper à la malédiction de la Dame Blanche. '),
+(10, 'Dumbo', '1h52min', '10', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-mPAnHDCm9Q\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'Les enfants de Holt Farrier, ex-artiste de cirque chargé de s’occuper d’un éléphanteau dont les oreilles démesurées sont la risée du public, découvrent que ce dernier sait voler...');
 
 -- --------------------------------------------------------
 
@@ -115,13 +132,15 @@ INSERT INTO `film` (`Id_Film`, `Titre_Film`, `Duree`, `Image_Film`, `Video_Film`
 -- Structure de la table `genre`
 --
 
-CREATE TABLE `genre` (
-  `Id_Genre` int(11) NOT NULL,
-  `Type_Genre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `genre`;
+CREATE TABLE IF NOT EXISTS `genre` (
+  `Id_Genre` int(11) NOT NULL AUTO_INCREMENT,
+  `Type_Genre` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id_Genre`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `genre`
+-- Déchargement des données de la table `genre`
 --
 
 INSERT INTO `genre` (`Id_Genre`, `Type_Genre`) VALUES
@@ -143,13 +162,16 @@ INSERT INTO `genre` (`Id_Genre`, `Type_Genre`) VALUES
 -- Structure de la table `jouer`
 --
 
-CREATE TABLE `jouer` (
+DROP TABLE IF EXISTS `jouer`;
+CREATE TABLE IF NOT EXISTS `jouer` (
   `Id_Acteur` int(11) NOT NULL,
-  `Id_Film` int(11) NOT NULL
+  `Id_Film` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Acteur`,`Id_Film`),
+  KEY `jouer_film0_FK` (`Id_Film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `jouer`
+-- Déchargement des données de la table `jouer`
 --
 
 INSERT INTO `jouer` (`Id_Acteur`, `Id_Film`) VALUES
@@ -187,12 +209,22 @@ INSERT INTO `jouer` (`Id_Acteur`, `Id_Film`) VALUES
 -- Structure de la table `membre`
 --
 
-CREATE TABLE `membre` (
-  `Id_Membre` int(11) NOT NULL,
+DROP TABLE IF EXISTS `membre`;
+CREATE TABLE IF NOT EXISTS `membre` (
+  `Id_Membre` int(11) NOT NULL AUTO_INCREMENT,
   `Login_Membre` varchar(255) NOT NULL,
   `Password_Membre` varchar(255) NOT NULL,
-  `Email_Membre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Email_Membre` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id_Membre`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `membre`
+--
+
+INSERT INTO `membre` (`Id_Membre`, `Login_Membre`, `Password_Membre`, `Email_Membre`) VALUES
+(1, 'Gael', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'gael.ponsard@live.fr'),
+(2, 'Lukas', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'lukas-p@outlook.fr');
 
 -- --------------------------------------------------------
 
@@ -200,12 +232,18 @@ CREATE TABLE `membre` (
 -- Structure de la table `modifier`
 --
 
-CREATE TABLE `modifier` (
+DROP TABLE IF EXISTS `modifier`;
+CREATE TABLE IF NOT EXISTS `modifier` (
   `Id_Membre` int(11) NOT NULL,
   `Id_Realisateur` int(11) NOT NULL,
   `Id_Acteur` int(11) NOT NULL,
   `Id_Film` int(11) NOT NULL,
-  `Id_Genre` int(11) NOT NULL
+  `Id_Genre` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Membre`,`Id_Realisateur`,`Id_Acteur`,`Id_Film`,`Id_Genre`),
+  KEY `modifier_realisateur0_FK` (`Id_Realisateur`),
+  KEY `modifier_acteur1_FK` (`Id_Acteur`),
+  KEY `modifier_film2_FK` (`Id_Film`),
+  KEY `modifier_genre3_FK` (`Id_Genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -214,15 +252,17 @@ CREATE TABLE `modifier` (
 -- Structure de la table `realisateur`
 --
 
-CREATE TABLE `realisateur` (
-  `Id_Realisateur` int(11) NOT NULL,
+DROP TABLE IF EXISTS `realisateur`;
+CREATE TABLE IF NOT EXISTS `realisateur` (
+  `Id_Realisateur` int(11) NOT NULL AUTO_INCREMENT,
   `Nom_Realisateur` varchar(255) NOT NULL,
   `Image_Realisateur` varchar(255) NOT NULL,
-  `Bio_Realisateur` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Bio_Realisateur` text NOT NULL,
+  PRIMARY KEY (`Id_Realisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `realisateur`
+-- Déchargement des données de la table `realisateur`
 --
 
 INSERT INTO `realisateur` (`Id_Realisateur`, `Nom_Realisateur`, `Image_Realisateur`, `Bio_Realisateur`) VALUES
@@ -245,13 +285,16 @@ INSERT INTO `realisateur` (`Id_Realisateur`, `Nom_Realisateur`, `Image_Realisate
 -- Structure de la table `realiser`
 --
 
-CREATE TABLE `realiser` (
+DROP TABLE IF EXISTS `realiser`;
+CREATE TABLE IF NOT EXISTS `realiser` (
   `Id_Realisateur` int(11) NOT NULL,
-  `Id_Film` int(11) NOT NULL
+  `Id_Film` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Realisateur`,`Id_Film`),
+  KEY `realiser_film0_FK` (`Id_Film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `realiser`
+-- Déchargement des données de la table `realiser`
 --
 
 INSERT INTO `realiser` (`Id_Realisateur`, `Id_Film`) VALUES
@@ -274,10 +317,20 @@ INSERT INTO `realiser` (`Id_Realisateur`, `Id_Film`) VALUES
 -- Structure de la table `role`
 --
 
-CREATE TABLE `role` (
-  `Id_Role` int(11) NOT NULL,
-  `Type_Role` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `Id_Role` int(11) NOT NULL AUTO_INCREMENT,
+  `Type_Role` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id_Role`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `role`
+--
+
+INSERT INTO `role` (`Id_Role`, `Type_Role`) VALUES
+(1, 'Administrateur'),
+(2, 'Utilisateur');
 
 -- --------------------------------------------------------
 
@@ -285,13 +338,16 @@ CREATE TABLE `role` (
 -- Structure de la table `soumettre`
 --
 
-CREATE TABLE `soumettre` (
+DROP TABLE IF EXISTS `soumettre`;
+CREATE TABLE IF NOT EXISTS `soumettre` (
   `Id_Film` int(11) NOT NULL,
-  `Id_Genre` int(11) NOT NULL
+  `Id_Genre` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Film`,`Id_Genre`),
+  KEY `soumettre_genre0_FK` (`Id_Genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `soumettre`
+-- Déchargement des données de la table `soumettre`
 --
 
 INSERT INTO `soumettre` (`Id_Film`, `Id_Genre`) VALUES
@@ -318,119 +374,7 @@ INSERT INTO `soumettre` (`Id_Film`, `Id_Genre`) VALUES
 (9, 11);
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `acteur`
---
-ALTER TABLE `acteur`
-  ADD PRIMARY KEY (`Id_Acteur`);
-
---
--- Index pour la table `etre`
---
-ALTER TABLE `etre`
-  ADD PRIMARY KEY (`Id_Role`,`Id_Membre`),
-  ADD KEY `etre_membre0_FK` (`Id_Membre`);
-
---
--- Index pour la table `film`
---
-ALTER TABLE `film`
-  ADD PRIMARY KEY (`Id_Film`);
-
---
--- Index pour la table `genre`
---
-ALTER TABLE `genre`
-  ADD PRIMARY KEY (`Id_Genre`);
-
---
--- Index pour la table `jouer`
---
-ALTER TABLE `jouer`
-  ADD PRIMARY KEY (`Id_Acteur`,`Id_Film`),
-  ADD KEY `jouer_film0_FK` (`Id_Film`);
-
---
--- Index pour la table `membre`
---
-ALTER TABLE `membre`
-  ADD PRIMARY KEY (`Id_Membre`);
-
---
--- Index pour la table `modifier`
---
-ALTER TABLE `modifier`
-  ADD PRIMARY KEY (`Id_Membre`,`Id_Realisateur`,`Id_Acteur`,`Id_Film`,`Id_Genre`),
-  ADD KEY `modifier_realisateur0_FK` (`Id_Realisateur`),
-  ADD KEY `modifier_acteur1_FK` (`Id_Acteur`),
-  ADD KEY `modifier_film2_FK` (`Id_Film`),
-  ADD KEY `modifier_genre3_FK` (`Id_Genre`);
-
---
--- Index pour la table `realisateur`
---
-ALTER TABLE `realisateur`
-  ADD PRIMARY KEY (`Id_Realisateur`);
-
---
--- Index pour la table `realiser`
---
-ALTER TABLE `realiser`
-  ADD PRIMARY KEY (`Id_Realisateur`,`Id_Film`),
-  ADD KEY `realiser_film0_FK` (`Id_Film`);
-
---
--- Index pour la table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`Id_Role`);
-
---
--- Index pour la table `soumettre`
---
-ALTER TABLE `soumettre`
-  ADD PRIMARY KEY (`Id_Film`,`Id_Genre`),
-  ADD KEY `soumettre_genre0_FK` (`Id_Genre`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `acteur`
---
-ALTER TABLE `acteur`
-  MODIFY `Id_Acteur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT pour la table `film`
---
-ALTER TABLE `film`
-  MODIFY `Id_Film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT pour la table `genre`
---
-ALTER TABLE `genre`
-  MODIFY `Id_Genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT pour la table `membre`
---
-ALTER TABLE `membre`
-  MODIFY `Id_Membre` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `realisateur`
---
-ALTER TABLE `realisateur`
-  MODIFY `Id_Realisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT pour la table `role`
---
-ALTER TABLE `role`
-  MODIFY `Id_Role` int(11) NOT NULL AUTO_INCREMENT;
---
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -470,6 +414,7 @@ ALTER TABLE `realiser`
 ALTER TABLE `soumettre`
   ADD CONSTRAINT `soumettre_film_FK` FOREIGN KEY (`Id_Film`) REFERENCES `film` (`Id_Film`),
   ADD CONSTRAINT `soumettre_genre0_FK` FOREIGN KEY (`Id_Genre`) REFERENCES `genre` (`Id_Genre`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
